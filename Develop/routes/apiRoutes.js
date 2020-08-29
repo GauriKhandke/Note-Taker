@@ -17,6 +17,10 @@ module.exports = function (app, fs) {
         // Extracted new note from request.  
         const newNote = request.body;
 
+        let noteId = (notesData.length + 1).toString();
+
+        newNote.id = noteId;
+
         // Pushed new note in notes file 'db.json'
         notesData.push(newNote);
 
@@ -25,11 +29,11 @@ module.exports = function (app, fs) {
             
             if(err) throw(err);
             
-            console.log("Successfully added new note to 'db.json' file!");
+            console.log("\n\nSuccessfully added new note to 'db.json' file!");
 
         });
 
-        console.log("Notes : "+JSON.stringify(notesData));
+        console.log("\n\nNotes : "+JSON.stringify(notesData));
 
         response.json(newNote);
     });
