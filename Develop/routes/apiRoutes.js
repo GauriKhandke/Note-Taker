@@ -1,40 +1,73 @@
-// LOAD Data from data source 'db.json'
-const notesData = require("../db/db.json");
-// const fs = require('fs');
+const fs = require("fs");
+
+// imported 'uuid' npm package for unique id
+const { v4: uuidv4 } = require('uuid');
 
 // ROUTING
-module.exports = function (app, fs) {
+module.exports = function (app) {
 
     // API GET Request
     app.get("/api/notes", (request, response) => {
+        
+        console.log("\n\nExecuting GET notes request");
 
-        response.send(notesData);
+        // Read 'db.json' file 
+        let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+        
+        console.log("\nGET request - Returning notes data: " + JSON.stringify(data));
+        
+        // Send read data to response of 'GET' request
+        response.json(data);
     });
+
 
     // API POST Request
     app.post("/api/notes", (request, response) => {
 
-        // Extracted new note from request.  
+        // Extracted new note from request body.  
         const newNote = request.body;
+        
+        console.log("\n\nPOST request - New Note : " + JSON.stringify(newNote));
 
-        let noteId = (notesData.length + 1).toString();
+        // Assigned unique id obtained from 'uuid' package
+        newNote.id = uuidv4();
 
-        newNote.id = noteId;
-
+        // Read data from 'db.json' file
+        let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    
         // Pushed new note in notes file 'db.json'
-        notesData.push(newNote);
+        data.push(newNote);
 
         // Written notes data to 'db.json' file
-        fs.writeFile('./db/db.json', JSON.stringify(notesData), (err) => {
-            
-            if(err) throw(err);
-            
-            console.log("\n\nSuccessfully added new note to 'db.json' file!");
+        fs.writeFileSync('./db/db.json', JSON.stringify(data));
+        
+        console.log("\nSuccessfully added new note to 'db.json' file!");
 
-        });
+        // Send response
+        response.json(data);
+    });
 
-        console.log("\n\nNotes : "+JSON.stringify(notesData));
 
-        response.json(newNote);
+    // API DELETE request
+    app.delete("/api/notes/:id", (request, response) => {
+
+        // Fetched id to delete
+        let noteId = request.params.id.toString();
+        
+        console.log(`\n\nDELETE note request for noteId: ${noteId}`);
+
+        // Read data from 'db.json' file
+        let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+
+        // filter data to get notes except the one to delete
+        const newData = data.filter( note => note.id.toString() !== noteId );
+
+        // Write new data to 'db.json' file
+        fs.writeFileSync('./db/db.json', JSON.stringify(newData));
+        
+        console.log(`\nSuccessfully deleted note with id : ${noteId}`);
+
+        // Send response
+        response.json(newData);
     });
 };
