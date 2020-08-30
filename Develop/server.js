@@ -1,10 +1,9 @@
 // Dependencies
 
 const express = require("express");
-const fs = require("fs");
+// const fs = require("fs");
 
 // Express configuration
-
 //Tells node that we are creating an 'express' server
 const app = express();
 
@@ -17,7 +16,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // ROUTES
-require('./routes/apiRoutes')(app, fs);
+require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
 
 app.listen(PORT, function() {
