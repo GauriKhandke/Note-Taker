@@ -1,3 +1,4 @@
+// Dependencies
 const fs = require("fs");
 
 // imported 'uuid' npm package for unique id

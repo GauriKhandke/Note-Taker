@@ -1,7 +1,5 @@
 // Dependencies
-
 const express = require("express");
-// const fs = require("fs");
 
 // Express configuration
 //Tells node that we are creating an 'express' server
