@@ -35,6 +35,15 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 * Being able to take persistent notes allows users to have written information available when needed.
 
+# Demo :
+![Note Taker](public/assets/images/NoteTaker.gif)
+
+# Screenshot : 
+
+|Main Page|Saved Notes|Delete Note
+|--|--|--
+|![Main Page](public/assets/images/MainPage.png)|![Saved Notes](public/assets/images/SavedNotes.png)|![Delete Note](public/assets/images/DeleteNote.png)
+
 # Technology :
 
 **1. [Express.js](https://expressjs.com/)** :
