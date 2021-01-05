@@ -1,16 +1,14 @@
 # Note-Taker
-UW Express Homework: Note Taker
-
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
 
-# Goal :
+# Description :
 
-* Create an application that can be used to write, save and delete notes. 
+This is a simple Note Taker application that allows users to add, view saved notes and also delete the notes if the user don't need that note anymore. This application uses an express backend and save and retrieve note data from a JSON file.
 
-* This application will use an express backend and save and retrieve note data from a JSON file.
+## Deployed Application :
+[Note Taker](https://gauri-express-notetaker.herokuapp.com/)
 
 # Table of Contents
-
 * [Demo](#demo)
 * [Technology](#technology)
 * [Usage](#usage)
@@ -38,11 +36,11 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 # Demo :
 ![Note Taker](public/assets/images/NoteTaker.gif)
 
-# Screenshot : 
+# Application Preview : 
 
 |Main Page|Saved Notes|Delete Note
 |--|--|--
-|![Main Page](public/assets/images/MainPage.png)|![Saved Notes](public/assets/images/SavedNotes.png)|![Delete Note](public/assets/images/DeleteNote.png)
+|![Main Page](public/assets/images/NoteTaker.png)|![Saved Notes](public/assets/images/SavedNotes.png)|![Delete Note](public/assets/images/DeleteNote.png)
 
 # Technology :
 
@@ -105,7 +103,3 @@ Pull requests are always welcome!
 If you have any questions about the repo, 
 [open an issue](https://github.com/GauriKhandke/Note-Taker/issues) 
 or contact me directly at [Email](mailto:khandkegauri@gmail.com).
-
-# Deployed Application
-
-[Express Note Taker](https://gauri-express-notetaker.herokuapp.com/)
